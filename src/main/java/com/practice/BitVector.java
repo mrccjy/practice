@@ -7,7 +7,7 @@ package com.practice;
 public class BitVector {
     private static final int SEPARATORWORD = 32;
     private static final int MASK = 31;
-    private static final byte SHIFT = 0x05;
+    private static final byte SHIFT = 5;
     private final int n;
     private final int[] arr;
 
