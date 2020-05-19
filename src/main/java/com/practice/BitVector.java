@@ -20,14 +20,23 @@ public class BitVector {
     }
 
     public void clear(int i) {
+        if (i < 0 || (i>>SHIFT) > arr.length -1) {
+            return;
+        }
         arr[i >> SHIFT] &= ~(1 << (i & MASK));
     }
 
     public void set(int i) {
+        if (i < 0 || (i>>SHIFT) > arr.length -1) {
+            return;
+        }
         arr[i >> SHIFT] |= 1 << (i & MASK);
     }
 
     public int test(int i) {
+        if (i < 0 || (i>>SHIFT) > arr.length -1) {
+            return 0;
+        }
         return (arr[i >> SHIFT] >> (i & MASK)) & 1;
     }
 
@@ -50,5 +59,6 @@ public class BitVector {
                 System.out.println(i+":"+b.test(i));
             }
         }
+        System.out.println(b.test(11000));
     }
 }
