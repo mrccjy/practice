@@ -15,8 +15,8 @@ public class Chapater21 {
 }
 class Identification{
     private static final String STR = "abcdefghijklmnopqrstuvwxyz";
-    String[] words;
-    final Map<String, List<String>> idenfyMap = new HashMap<String, List<String>>();
+    private String[] words;
+    private final Map<String, List<String>> idenfyMap = new HashMap<String, List<String>>();
     final Map<String, List<String>> unmodifiableMap;
 
     public Identification(String ... words) {
