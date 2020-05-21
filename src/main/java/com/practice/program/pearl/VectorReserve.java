@@ -37,7 +37,7 @@ class AcrobaticsReverse {
     }
 
     /**
-     * 从开始下标移动size个字符到末尾
+     * 向左移动size个字符到末尾
      * 例如：abcdefg    reverse(3)
      * 结果defgabc
      * @param size 个数
