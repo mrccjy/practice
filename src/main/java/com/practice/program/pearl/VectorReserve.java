@@ -88,6 +88,12 @@ class AcrobaticsReverse {
         return reverseStr;
     }
 
+    /**
+     * 简单实现两数的最大公约数
+     * @param length
+     * @param size
+     * @return
+     */
     private int gcd(int length, int size) {
         if (length%size == 0) {
             return size;
