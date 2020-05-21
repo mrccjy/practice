@@ -1,4 +1,4 @@
-package com.practice;
+package com.practice.program.pearl;
 /**
  *  @description: TODO
  *  @author chen.junyong
