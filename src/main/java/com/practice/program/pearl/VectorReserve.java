@@ -73,6 +73,7 @@ class AcrobaticsReverse {
                 if (k >= charStr.length) {
                     k -= charStr.length;
                 }
+                //如果相减之后的下标又回到了刚开始移动的那个下标，两指针相遇，意味完成了该次循环。
                 if (k == i) {
                     break;
                 }
