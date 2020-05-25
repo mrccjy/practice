@@ -60,7 +60,7 @@ class AcrobaticsReverse {
             int j = i;
             //填充源下标
             int k = j+size;
-            while (charStr[j] != charStr[k]) {
+            while (k != i) {
                 charStr[j] = charStr[k];
                 //把填充源下标作为下一次的待被填充下标
                 j = k;
@@ -74,10 +74,6 @@ class AcrobaticsReverse {
                     k -= charStr.length;
                 }
                 //如果相减之后的下标又回到了刚开始移动的那个下标，两指针相遇，意味完成了该次循环。
-                if (k == i) {
-                    break;
-                }
-
             }
             charStr[j] = t;
         }
