@@ -27,6 +27,7 @@ package com.practice.leetcode.editor.cn;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingCharacters{
@@ -35,13 +36,36 @@ public class LongestSubstringWithoutRepeatingCharacters{
        Solution solution = l.new Solution();
 //       String s = "abcabcdd";
 //       String s = "abcabcbb";
-       String s = "abcadcaa";
+//       String s = "abcadcaa";
+//       String s = "pwwkew";
+//       String s = "bbtablud";
+       String s = "bpfbhmipx";
       System.out.println(solution.lengthOfLongestSubstring(s));
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        return method1(s);
+        return method3(s);
+    }
+
+      /**
+       * 网上解法
+       * @param s
+       * @return
+       */
+    public int method3(String s) {
+        int n = s.length(), ans = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int end = 0, start = 0; end < n; end++) {
+            char alpha = s.charAt(end);
+            if (map.containsKey(alpha)) {
+                start = Math.max(map.get(alpha), start);
+            }
+            ans = Math.max(ans, end - start + 1);
+            map.put(s.charAt(end), end + 1);
+        }
+        return ans;
+
     }
 
       /**
@@ -79,6 +103,7 @@ class Solution {
         HashMap<Character, Integer> existWords = new HashMap<>();
         int maxNotduplicSequenceSize = 0;
         int maxNotduplicSequenceSizeSofar = 0;
+        int start = 0;
         for (int i=0; i<s.length(); i++) {
             if (!existWords.containsKey(s.charAt(i))) {
                 maxNotduplicSequenceSize++;
@@ -88,11 +113,17 @@ class Solution {
                 maxNotduplicSequenceSizeSofar = Math.max(maxNotduplicSequenceSize, maxNotduplicSequenceSizeSofar);
             } else {
                 //获取上一次重复的值的下标，循环从该处开始
+                int tmp = i;
                 i = existWords.get(s.charAt(i));
                 //清楚缓存
-                existWords.clear();
-                //重置该次不重复循环的次数
-                maxNotduplicSequenceSize = 0;
+                for (int j=start; j<=i; j++) {
+                    existWords.remove(s.charAt(j));
+                    maxNotduplicSequenceSize--;
+                }
+                start = i + 1;
+                i = tmp;
+                existWords.put(s.charAt(i), i);
+                maxNotduplicSequenceSize = existWords.size();
             }
         }
         return maxNotduplicSequenceSizeSofar;
