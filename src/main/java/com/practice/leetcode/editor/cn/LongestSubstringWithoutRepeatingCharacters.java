@@ -26,27 +26,56 @@ package com.practice.leetcode.editor.cn;
 // Related Topics 哈希表 双指针 字符串 Sliding Window
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingCharacters{
   public static void main(String[] args) {
       LongestSubstringWithoutRepeatingCharacters l = new LongestSubstringWithoutRepeatingCharacters();
        Solution solution = l.new Solution();
 //       String s = "abcabcdd";
-       String s = "abcabcbb";
-//       String s = "abcadcaa";
+//       String s = "abcabcbb";
+       String s = "abcadcaa";
       System.out.println(solution.lengthOfLongestSubstring(s));
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        return method1(s);
+        return method2(s);
     }
 
+      /**
+       * 滑动窗口解法
+       * @param s
+       * @return
+       */
     public int method2(String s) {
-
-        return 0;
+        Set<Character> existWords = new HashSet<>();
+        char[] c = s.toCharArray();
+        int maxNotduplicSequenceSizeSofar = 0;
+        int r = 0;
+        for (int i=0; i<c.length;) {
+            while (r < c.length && !existWords.contains(c[r])) {
+                existWords.add(c[r]);
+                r++;
+            }
+            maxNotduplicSequenceSizeSofar = Math.max(existWords.size(), maxNotduplicSequenceSizeSofar);
+            if (r >= c.length) {
+                break;
+            } else {
+                while(i < r && existWords.contains(c[r])) {
+                    existWords.remove(c[i++]);
+                }
+            }
+        }
+        return maxNotduplicSequenceSizeSofar;
     }
 
+      /**
+       * 循环解法
+       * @param s
+       * @return
+       */
     public int method1(String s) {
         HashMap<Character, Integer> existWords = new HashMap<>();
         char[] c = s.toCharArray();
@@ -61,7 +90,6 @@ class Solution {
                 maxNotduplicSequenceSizeSofar = Math.max(maxNotduplicSequenceSize, maxNotduplicSequenceSizeSofar);
             } else {
                 //获取上一次重复的值的下标，循环从该处开始
-                int currI = i;
                 i = existWords.get(c[i]);
                 //清楚缓存
                 existWords.clear();
