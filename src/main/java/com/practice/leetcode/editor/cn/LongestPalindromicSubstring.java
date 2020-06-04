@@ -31,7 +31,7 @@ class Solution {
     }
 
       /**
-       * 三次方算法，暴力。leetCode上直接超时
+       * 三次方算法，暴力
        * @param s
        * @return
        */
