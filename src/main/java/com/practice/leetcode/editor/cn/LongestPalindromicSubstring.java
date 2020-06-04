@@ -19,7 +19,7 @@ package com.practice.leetcode.editor.cn;
 public class LongestPalindromicSubstring{
   public static void main(String[] args) {
        Solution solution = new LongestPalindromicSubstring().new Solution();
-      System.out.println(solution.longestPalindrome("bb"));
+      System.out.println(solution.longestPalindrome("ac"));
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
@@ -36,26 +36,28 @@ class Solution {
        * @return
        */
     public String cubeTimeAlgorithm(String s) {
-        int maxSize = 0;
-        String subString = null;
-        String palinString = null;
-        for (int i=0; i<s.length()-1; i++) {
-            for (int j = i+1; j<=s.length(); j++) {
-                subString = s.substring(i,j);
-                if (isPalinString(subString) && subString.length() > maxSize) {
-                    palinString = subString;
-                    maxSize = subString.length();
+        int n = s.length();
+        int maxSize = 1;
+        int begin = 0;
+        char[] c = s.toCharArray();
+        for (int i=0; i<n-1; i++) {
+            for (int j = i+1; j<n; j++) {
+                if (isPalinString(c, i, j) && (j-i+1) > maxSize) {
+                    begin = i;
+                    maxSize = j-i+1;
                 }
             }
         }
-        return palinString;
+        return s.substring(begin, begin+maxSize);
     }
 
-    private boolean isPalinString(String s) {
-        for (int i=0; i<s.length()/2;i++) {
-            if (s.charAt(i) != s.charAt(s.length()-1-i)) {
+    private boolean isPalinString(char[] s, int left, int right) {
+        while (left < right) {
+            if (s[left] != s[right]) {
                 return false;
-            };
+            }
+            left++;
+            right--;
         }
         return true;
     }
