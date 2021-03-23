@@ -1,4 +1,4 @@
-package com.practice.program.pearl;
+package com.practice.sort;
 
 import java.util.Arrays;
 import java.util.Random;
