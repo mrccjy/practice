@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class InsertSort {
     public static void main(String[] args) {
-//        int[] a3 = new int[]{5,7,9,8,6,4,1,3,2};
+//        int[] a1 = new int[]{5,7,9,8,6,4,1,3,2};
 //        int[] a2 = new int[]{1,2,3,4,5,6,7,8,9,10};
         int[] a1 = new int[50000];
         Random r1 = new Random(System.currentTimeMillis());
@@ -27,8 +27,11 @@ public class InsertSort {
 
     private static void insertSort(int[] a) {
         for (int i=0; i<a.length; i++) {
+            int pivot = i;
             int pre = i-1;
-            while (pre >=0 && a[i]>=a[pre]) {
+            while (pre >= 0 && a[pivot] <= a[pre]) {
+                swap(pre, pivot, a);
+                pivot = pre;
                 pre--;
             }
         }
