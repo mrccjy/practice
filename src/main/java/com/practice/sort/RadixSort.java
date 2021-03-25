@@ -50,7 +50,7 @@ public class RadixSort {
 
     private static int getNumCount(int a) {
         int num = 1;
-        while (a >> 1 != 0) {
+        while ((a = a/10) != 0) {
             num++;
         }
         return num;
