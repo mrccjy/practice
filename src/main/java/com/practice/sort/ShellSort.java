@@ -1,5 +1,8 @@
 package com.practice.sort;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -20,9 +23,7 @@ public class ShellSort {
         shellSort(a1);
         long end1 = System.currentTimeMillis();
         System.out.println("time1:" + (end1 - start1) + "ms");
-        for (int i : a1) {
-            System.out.print(i+",");
-        }
+        System.out.println(Arrays.toString(a1));
     }
 
     private static void shellSort(int[] a) {
