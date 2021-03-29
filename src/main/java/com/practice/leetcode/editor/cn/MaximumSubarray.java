@@ -61,23 +61,43 @@ public class MaximumSubarray{
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+//    public int maxSubArray(int[] nums) {
+//        //f(i) = max{f(i-1) + num[i], num[i]}
+//        if (nums.length == 0) {
+//            return 0;
+//        }
+//        //第i个值得最大和
+//        int[] dp = new int[nums.length];
+//        int max = nums[0];
+//        dp[0] = nums[0];
+//        for (int i=1; i<nums.length; i++) {
+//            if (nums[i] + dp[i-1] > nums[i]) {
+//                dp[i] = nums[i] + dp[i-1];
+//            } else {
+//                dp[i] = nums[i];
+//            }
+//            if (dp[i] > max) {
+//                max = dp[i];
+//            }
+//        }
+//        return max;
+//    }
     public int maxSubArray(int[] nums) {
         //f(i) = max{f(i-1) + num[i], num[i]}
         if (nums.length == 0) {
             return 0;
         }
         //第i个值得最大和
-        int[] dp = new int[nums.length];
         int max = nums[0];
-        dp[0] = nums[0];
+        int preDP = nums[0];
         for (int i=1; i<nums.length; i++) {
-            if (nums[i] + dp[i-1] > nums[i]) {
-                dp[i] = nums[i] + dp[i-1];
+            if (nums[i] + preDP > nums[i]) {
+                preDP = nums[i] + preDP;
             } else {
-                dp[i] = nums[i];
+                preDP = nums[i];
             }
-            if (dp[i] > max) {
-                max = dp[i];
+            if (preDP > max) {
+                max = preDP;
             }
         }
         return max;
