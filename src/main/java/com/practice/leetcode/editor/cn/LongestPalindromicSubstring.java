@@ -19,15 +19,54 @@ package com.practice.leetcode.editor.cn;
 public class LongestPalindromicSubstring{
   public static void main(String[] args) {
        Solution solution = new LongestPalindromicSubstring().new Solution();
-      System.out.println(solution.longestPalindrome("ac"));
+      System.out.println(solution.longestPalindrome("babad"));
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+//    public String longestPalindrome(String s) {
+//        if (s.length() == 0 || s.length() == 1) {
+//            return s;
+//        }
+//        return cubeTimeAlgorithm(s);
+//    }
+
     public String longestPalindrome(String s) {
-        if (s.length() == 0 || s.length() == 1) {
-            return s;
+       char[] c = s.toCharArray();
+       int size = c.length;
+       if (size < 2) {
+           return s;
+       }
+       boolean[][] dp = new boolean[size][size];
+
+        // 初始化
+        for (int i = 0; i < size; i++) {
+            dp[i][i] = true;
         }
-        return cubeTimeAlgorithm(s);
+
+       int start = 0;
+       int len = 1;
+       for (int j=1; j<size; j++) {
+           for (int i=0; i<j; i++) {
+               if (c[j] == c[i]) {
+                   if ((j - i < 3)) {
+                       dp[i][j] = true;
+                   } else {
+                       dp[i][j] = dp[i+1][j-1];
+                   }
+               } else {
+                   dp[i][j] = false;
+               }
+
+               if (dp[i][j]) {
+                   if (j - i + 1 > len) {
+                       start = i;
+                       len = j - i + 1;
+                   }
+               }
+           }
+       }
+
+       return s.substring(start, start+len);
     }
 
       /**
