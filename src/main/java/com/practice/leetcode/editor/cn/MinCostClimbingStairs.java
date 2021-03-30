@@ -42,7 +42,7 @@ public class MinCostClimbingStairs{
 class Solution {
     public int minCostClimbingStairs(int[] cost) {
         //f(i) = min{f(i-1)+a[i-1], f(i-2)+a[i-2]} 1<i<=a.len
-        //f(i)表示楼梯i最小花费，楼顶为a.len,所以dp数组为a.len+1
+        //f(i)表示到达楼梯i最小花费，楼顶为a.len,所以dp数组为a.len+1
         if (cost.length == 1) {
             return 0;
         }
