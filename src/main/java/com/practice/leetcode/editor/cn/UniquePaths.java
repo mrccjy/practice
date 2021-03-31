@@ -57,7 +57,7 @@ public class UniquePaths{
 class Solution {
     public int uniquePaths(int m, int n) {
         /**
-         *  因为走向只能往右和往下走，所以第i个格子的走法取决于左边格子i,j-1和上边格子i-1,j的走法之和，矩形边上所有格子的走法
+         *  因为走向只能往右和往下走，所以第i个格子的走法取决于左边格子(i,j-1)和上边格子(i-1,j)的走法之和，矩形边上所有格子的走法
          *  都只有1种,得出f(i,j)=f(i,j-1)+f(i-1,j) 0<=i<m, 0<=j<n
          *  初始化dp,左边和上边都为1
          */
