@@ -56,9 +56,11 @@ public class UniquePaths{
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int uniquePaths(int m, int n) {
-        //因为走向只能往右和往下走，所以第i个格子的走法取决于左边格子i,j-1和上边格子i-1,j的走法之和，矩形边上所有格子的走法
-        //都只有1中,得出f(i,j)=f(i,j-1)+f(i-1,j) 0<=i<m, 0<=j<n
-        //初始化dp,左边和上边都为1
+        /**
+         *  因为走向只能往右和往下走，所以第i个格子的走法取决于左边格子i,j-1和上边格子i-1,j的走法之和，矩形边上所有格子的走法
+         *  都只有1种,得出f(i,j)=f(i,j-1)+f(i-1,j) 0<=i<m, 0<=j<n
+         *  初始化dp,左边和上边都为1
+         */
         int[][] dp = new int[m][n];
         for (int i=0; i<m; i++) {
             dp[i][0]=1;
