@@ -70,6 +70,18 @@ public class DecodeWays{
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int numDecodings(String s) {
+        /**
+         * f(i) 定义为下标第i个数字对应的编码解次数，
+         * 状态转移方程:
+         *         ︷
+         *         0 ,             a[i]=0 & a[i]!=1 & a[i]!=2
+         * f(i)=   f(i-1)+f(i-2),  a[i]!=0 & (a[i-1]=1 || (a[i-1]=2 & 1<=a[i]<=6) & i>1)
+         *         f(i-1),         (a[i]=0 & 1<=a[i]<=2 & i=1) || ((a[i-2]=2 & a[i]>6) || a[i-1]>2)
+         *         f(i-2),         (a[i]=0 & 1<=a[i]<=2 & i>1)
+         *         f(i-1),+1;      a[i]!=0 & (a[i-1]=1 || (a[i-1]=2 & 1<=a[i]<=6) & i=1)
+         *         ︸
+         */
+
         int[] a = new int[s.length()];
         for (int i=0; i< a.length; i++) {
             a[i] = Integer.parseInt(String.valueOf(s.charAt(i)));
