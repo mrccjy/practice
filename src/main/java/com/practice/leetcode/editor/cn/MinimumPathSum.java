@@ -58,9 +58,10 @@ class Solution {
         }
         for (int j=1; j<n; j++) {
             for (int i=1; i<m; i++) {
-                dp[i][j]
+                dp[i][j] = Math.min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
             }
         }
+        return dp[m-1][n-1];
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
