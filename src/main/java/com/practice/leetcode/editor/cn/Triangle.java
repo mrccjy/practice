@@ -58,7 +58,7 @@ class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         //f(i,j)表示到达第(i,j)个元素时，最小和，取决于f(i-1,j-1)和f(i-1,j)元素的最小和(因为只能从上面到下面2个元素路径)
         //
-        // f(i,j) = min{f(i-1,j-1),     f(i-1,j)}+a[i][j] 1<i<a.length, 1<j<a[a.length-1].length-1
+        // f(i,j) = min{f(i-1,j-1), f(i-1,j)}+a[i][j], 1<i<a.length, 1<j<a[a.length-1].length-1
         //          f(i-1,j)+a[i][j],   j=0
         //          f(i-1,j-1)+a[i,j-1],  j=a[i].length-1
         //          f(0,0)=a[0][0]
