@@ -45,7 +45,7 @@ package com.practice.leetcode.editor.cn;
 
 public class NumberOfRecentCalls{
   public static void main(String[] args) {
-       Solution solution = new NumberOfRecentCalls().new Solution();
+//       Solution solution = new NumberOfRecentCalls().new Solution();
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class RecentCounter {
