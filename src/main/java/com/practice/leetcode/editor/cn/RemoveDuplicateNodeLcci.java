@@ -29,6 +29,7 @@ package com.practice.leetcode.editor.cn;
 // Related Topics 链表
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class RemoveDuplicateNodeLcci{
   public static void main(String[] args) {
