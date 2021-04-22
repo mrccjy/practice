@@ -38,7 +38,22 @@ package com.practice.leetcode.editor.cn;
 
 public class RemoveLinkedListElements{
   public static void main(String[] args) {
-       Solution solution = new RemoveLinkedListElements().new Solution();
+      RemoveLinkedListElements t = new RemoveLinkedListElements();
+       Solution solution = t.new Solution();
+       ListNode n1 = t.new ListNode(1);
+       ListNode n2 = t.new ListNode(2);
+       ListNode n3 = t.new ListNode(6);
+       ListNode n4 = t.new ListNode(3);
+       ListNode n5 = t.new ListNode(4);
+       ListNode n6 = t.new ListNode(5);
+       ListNode n7 = t.new ListNode(6);
+       n1.next = n2;
+       n2.next = n3;
+       n3.next = n4;
+       n4.next = n5;
+       n5.next = n6;
+       n6.next = n7;
+       solution.removeElements(n1, 6);
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -58,13 +73,18 @@ class Solution {
             return null;
         }
         ListNode curr = head.next;
+        ListNode tmp = null;
         while (curr != null) {
             if (curr.val == val) {
+                tmp = curr;
                 prev.next = curr.next;
             } else {
                 prev = curr;
             }
             curr = curr.next;
+            if (tmp != null) {
+                tmp.next = null;
+            }
         }
         if (head.val == val) {
             return head.next;
