@@ -19,14 +19,11 @@ public class LianBiaoZhongDaoShuDiKgeJieDianLcof{
        Solution solution = new LianBiaoZhongDaoShuDiKgeJieDianLcof().new Solution();
   }
   //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
+  public class ListNode {
+      int val;
+      ListNode next;
+      ListNode(int x) { val = x; }
+  }
 class Solution {
     public ListNode getKthFromEnd(ListNode head, int k) {
         if (head == null) {
