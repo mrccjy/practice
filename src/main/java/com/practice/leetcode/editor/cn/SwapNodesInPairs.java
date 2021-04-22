@@ -58,13 +58,11 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode next = swapPairs(head.next.next);
-        ListNode tmp = head.next;
-        head.next.next = head;
-        head.next = next;
-        head = tmp;
+        ListNode newHead = head.next;
+        head.next = swapPairs(head.next.next);
+        newHead.next = head;
 
-        return head;
+        return newHead;
     }
 
 }
