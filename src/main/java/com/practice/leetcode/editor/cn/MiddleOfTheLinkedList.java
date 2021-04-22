@@ -39,14 +39,11 @@ public class MiddleOfTheLinkedList{
        Solution solution = new MiddleOfTheLinkedList().new Solution();
   }
   //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
- * }
- */
+  public class ListNode {
+      int val;
+      ListNode next;
+      ListNode(int x) { val = x; }
+  }
 class Solution {
     public ListNode middleNode(ListNode head) {
         ListNode slow = head;
