@@ -56,36 +56,19 @@ class Solution {
         if (head == null) {
             return head;
         }
+        ListNode sentinel = new ListNode(0, head);
+        ListNode first = head;
+        ListNode second = sentinel;
+        for (int i=0; i<n; i++) {
+            first = first.next;
+        }
+        while (first != null) {
+            first = first.next;
+            second = second.next;
+        }
+        second.next = second.next.next;
 
-        if (head.next == null) {
-            return null;
-        }
-        ListNode nth = head;
-        for (int i=1; i<n; i++) {
-            if(nth.next == null) {
-                nth = null;
-            }
-            nth = nth.next;
-        }
-        if (nth == null) {
-            return null;
-        }
-        ListNode prev = null;
-        ListNode pprev = null;
-        ListNode curr = head;
-        while (nth != null) {
-            pprev = prev;
-            prev = curr;
-            curr = curr.next;
-            nth = nth.next;
-        }
-        ListNode h = head;
-        if (pprev == null) {
-            h = prev.next;
-        } else {
-            pprev.next = prev.next;
-        }
-        return h;
+        return sentinel.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
