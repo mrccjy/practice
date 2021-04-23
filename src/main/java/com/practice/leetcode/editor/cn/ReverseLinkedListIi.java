@@ -49,6 +49,8 @@ public class ReverseLinkedListIi{
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
         int count = right - left;
+        //此处为哨兵结点，断链和建立链接需要前驱结点，当前结点和后续结点
+        //哨兵结点为前驱结点，这样可以通过sent.next,sent.next.next方位当前结点和后续结点
         ListNode sent = new ListNode(0, head);
         ListNode pre = sent;
 
@@ -60,7 +62,7 @@ class Solution {
         // sentinel   ->   1   ->   2   ->   3   ->   4
         //  pre           curr
         ListNode tmp = null;
-        while (curr != null && (count--) > 0) {
+        while (curr.next != null && (count--) > 0) {
             //                      tmp
             //sentinel   ->   1  ->   2   ->   3   ->   4
             //  pre          curr
