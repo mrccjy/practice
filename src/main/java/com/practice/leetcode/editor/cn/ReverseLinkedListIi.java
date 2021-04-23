@@ -57,12 +57,38 @@ class Solution {
             pre = curr;
             curr = curr.next;
         }
-
+        // sentinel   ->   1   ->   2   ->   3   ->   4
+        //  pre           curr
         ListNode tmp = null;
         while (curr != null && (count--) > 0) {
+            //                      tmp
+            //sentinel   ->   1  ->   2   ->   3   ->   4
+            //  pre          curr
             tmp = curr.next;
+
+            //                       tmp
+            //                        2-------┐
+            //                                |
+            //                                ∨
+            //sentinel   ->   1      -->      3   ->   4
+            //  pre          curr
+            //
             curr.next = tmp.next;
+
+            //               tmp
+            //                2
+            //                |
+            //                ∨
+            //sentinel   ->   1   -->   3   ->   4
+            //  pre         curr
+            //
             tmp.next = pre.next;
+
+
+            //               tmp
+            //sentinel   -->  2   -->   1   -->   3   ->   4
+            //  pre                    curr
+            //curr一直跟着1这个固定节点，因为1每次都链接新的后续节点，所以不需要变动curr就可以完成迭代移动
             pre.next = tmp;
         }
         return sent.next;
