@@ -68,6 +68,7 @@ package com.practice.leetcode.editor.cn;
 // Related Topics 哈希表 链表
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class CopyListWithRandomPointer{
   public static void main(String[] args) {
