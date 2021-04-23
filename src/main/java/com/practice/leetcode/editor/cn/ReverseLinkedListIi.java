@@ -58,18 +58,13 @@ class Solution {
             curr = curr.next;
         }
 
-        ListNode leftsplitNode = pre;
-        ListNode newReverTail = pre.next;
-        ListNode rightNode = null;
-        ListNode nP = null;
-        while (curr != null && (count--) >= 0) {
-            rightNode = curr.next;
-            curr.next = nP;
-            nP = curr;
-            curr = rightNode;
+        ListNode tmp = null;
+        while (curr != null && (count--) > 0) {
+            tmp = curr.next;
+            curr.next = tmp.next;
+            tmp.next = pre.next;
+            pre.next = tmp;
         }
-        leftsplitNode.next = nP;
-        newReverTail.next = rightNode;
         return sent.next;
     }
 }
