@@ -54,8 +54,7 @@ class Solution {
             stack2 = tmp;
         }
 
-        ListNode head = null;
-        ListNode curr = head;
+        ListNode ans = null;
 
         int extra = 0;
         while (!stack1.isEmpty()) {
@@ -72,24 +71,18 @@ class Solution {
             }
             total = total % 10;
             ListNode n = new ListNode(total);
-            if (head == null) {
-                head = n;
-                curr = head;
-            } else {
-                curr.next = n;
-                curr = curr.next;
-            }
+            n.next = ans;
+            ans = n;
         }
         if (extra != 0) {
-            curr.next = new ListNode(extra);
+            ListNode n = new ListNode(extra);
+            n.next = ans;
+            ans = n;
         }
 
-        if (head == null || head.next == null) {
-            return head;
-        }
 
         //反转链表
-        ListNode dummy = new ListNode(0, head);
+        /*ListNode dummy = new ListNode(0, head);
         ListNode prev = dummy;
         ListNode cu = prev.next;
         while (cu.next != null) {
@@ -97,8 +90,8 @@ class Solution {
             cu.next = curNext.next;
             curNext.next = prev.next;
             prev.next = curNext;
-        }
-        return dummy.next;
+        }*/
+        return ans;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
