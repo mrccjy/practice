@@ -62,9 +62,73 @@ public class SortList{
       }
 class Solution {
     public ListNode sortList(ListNode head) {
-        return recursiveSort(head, null);
+//        return recursiveSort(head, null);
+        return bottomToUpSort(head);
     }
 
+    /**
+     *
+     * 自底向上排序
+     * 空间复杂度O(1)、时间复杂度O(n*logn)
+     *
+     * 链表：4 - 2 - 3 - 1
+     * 第一趟：两两链表长度为1
+     *      第一次：2 - 4 - 3 - 1
+     *      第二次：2 - 4 - 1 - 3
+     * 第二趟：两两链表长度为2
+     *      第一次：1 - 2 - 3 - 4
+     *      完成
+     * @param head
+     */
+    private ListNode bottomToUpSort(ListNode head) {
+        ListNode sentinel = new ListNode(0, head);
+        ListNode curr = sentinel.next;
+        int length = 0;
+        while (curr != null) {
+            length++;
+            curr = curr.next;
+        }
+
+        for (int subLength = 1; subLength < length; subLength = subLength * 2) {
+            ListNode pre = sentinel;
+            curr = sentinel.next;
+            while (curr != null) {
+                ListNode l1 = curr;
+                for (int i=1; i<subLength && curr.next != null; i++) {
+                    curr = curr.next;
+                }
+                ListNode l2 = curr.next;
+                curr.next = null;
+                curr = l2;
+                for (int i=1; i<subLength && curr != null && curr.next != null; i++) {
+                    curr = curr.next;
+                }
+                ListNode next = null;
+                if (curr != null) {
+                    next = curr.next;
+                    curr.next = null;
+                }
+                ListNode sorted = merge(l1, l2);
+                pre.next = sorted;
+                while (pre.next != null) {
+                    pre = pre.next;
+                }
+                curr = next;
+            }
+        }
+
+        return sentinel.next;
+    }
+
+        /**
+         *
+         * 自顶向下使用递归完成排序
+         * 空间复杂度O(logn)、时间复杂度O(n*logn)
+         *
+         * @param head
+         * @param tail
+         * @return
+         */
     private ListNode recursiveSort(ListNode head, ListNode tail) {
         if (head == null) {
             return head;
