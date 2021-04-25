@@ -40,7 +40,7 @@ package com.practice.leetcode.editor.cn;
 
 public class DesignLinkedList{
   public static void main(String[] args) {
-       Solution solution = new DesignLinkedList().new Solution();
+      MyLinkedList solution = new DesignLinkedList().new MyLinkedList();
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class MyLinkedList {
