@@ -50,7 +50,6 @@ public class NextGreaterNodeInLinkedList{
        Solution solution = new NextGreaterNodeInLinkedList().new Solution();
   }
   //leetcode submit region begin(Prohibit modification and deletion)
-  Definition for singly-linked list.
   public class ListNode {
       int val;
       ListNode next;
