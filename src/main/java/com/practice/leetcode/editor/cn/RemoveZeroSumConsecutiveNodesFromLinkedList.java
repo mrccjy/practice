@@ -40,6 +40,7 @@ package com.practice.leetcode.editor.cn;
 // Related Topics 链表
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class RemoveZeroSumConsecutiveNodesFromLinkedList{
   public static void main(String[] args) {
