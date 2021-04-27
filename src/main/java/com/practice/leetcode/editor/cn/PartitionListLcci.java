@@ -23,6 +23,7 @@ public class PartitionListLcci{
   }
 class Solution {
     public ListNode partition(ListNode head, int x) {
+        //解法一
         ListNode small = new ListNode(0);
         ListNode smallHead = small;
         ListNode large = new ListNode(0);
@@ -40,6 +41,26 @@ class Solution {
         large.next = null;
         small.next = largeHead.next;
         return smallHead.next;
+        //解法二
+       /* ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode pre = dummy;
+        while (pre.next != null && pre.next.val < x) {
+            pre = pre.next;
+        }
+        ListNode less = pre;
+        while (less.next != null) {
+            if ( less.next.val < x) {
+                ListNode target = less.next;
+                less.next = less.next.next;
+                target.next = pre.next;
+                pre.next = target;
+                pre = pre.next;
+            } else {
+                less = less.next;
+            }
+        }
+        return dummy.next;*/
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
