@@ -75,7 +75,7 @@ class Solution {
             for (Character c : track) {
                 sb.append(c);
             }
-            if (sb.length() != 0 && !res.contains(sb.toString())) {
+            if (sb.length() != 0) {
                 res.add(sb.toString());
             }
             return;
