@@ -37,16 +37,32 @@ class Solution {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode curr = head;
-        ListNode prev = null;
-        while (curr != null) {
-            ListNode next = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = next;
+//        ListNode curr = head;
+//        ListNode prev = null;
+//        while (curr != null) {
+//            ListNode next = curr.next;
+//            curr.next = prev;
+//            prev = curr;
+//            curr = next;
+//
+//        }
+//        return prev;
 
+        if (head == null || head.next == null) {
+            return head;
         }
-        return prev;
+        ListNode dummy = new ListNode(0, head);
+        ListNode prev = head;
+        ListNode curr = head.next;
+        ListNode tmp = null;
+        while (curr != null) {
+            tmp = curr.next;
+            prev.next = curr.next;
+            curr.next = dummy.next;
+            dummy.next = curr;
+            curr = tmp;
+        }
+        return dummy.next;
     }
 
     /**
