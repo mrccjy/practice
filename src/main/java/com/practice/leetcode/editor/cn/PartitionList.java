@@ -47,7 +47,7 @@ class Solution {
     public ListNode partition(ListNode head, int x) {
         //输入：head = [1,4,3,2,5,2], x = 3
         //输出：[1,2,2,4,3,5]
-        ListNode sentienl = new ListNode(0, head);
+       /* ListNode sentienl = new ListNode(0, head);
         ListNode dummy = sentienl;
         while (dummy.next != null && dummy.next.val < x) {
             dummy = dummy.next;
@@ -67,7 +67,34 @@ class Solution {
                 lessNumNode = lessNumNode.next;
             }
         }
-        return sentienl.next;
+        return sentienl.next;*/
+
+        //另一种单次循环解决方案
+        if (head == null) {
+            return head;
+        }
+        ListNode sentinel = new ListNode(0, head);
+        ListNode dummy = sentinel;
+        outer:
+        while (dummy.next != null) {
+            if (dummy.next.val < x) {
+                dummy = dummy.next;
+            } else {
+                ListNode innDummy = dummy;
+                while (innDummy.next != null && innDummy.next.val >= x) {
+                    innDummy = innDummy.next;
+                }
+                if (innDummy.next == null) {
+                    break outer;
+                }
+                ListNode tmp = dummy.next;
+                dummy.next = innDummy.next;
+                dummy = dummy.next;
+                innDummy.next = innDummy.next.next;
+                dummy.next = tmp;
+            }
+        }
+        return sentinel.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
