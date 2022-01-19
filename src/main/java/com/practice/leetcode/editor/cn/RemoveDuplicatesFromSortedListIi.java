@@ -46,7 +46,7 @@ public class RemoveDuplicatesFromSortedListIi{
   }
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode sent = new ListNode(0,head);
+        /*ListNode sent = new ListNode(0,head);
         ListNode prev = sent;
         ListNode curr = head;
         while (curr != null && curr.next != null) {
@@ -68,7 +68,29 @@ class Solution {
             }
             curr = curr.next;
         }
-        return sent.next;
+        return sent.next;*/
+
+        //另一简单实现
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode sentinel = new ListNode(0, head);
+        ListNode curr = sentinel;
+        while (curr != null && curr.next != null && curr.next.next != null) {
+
+            if (curr.next.val == curr.next.next.val) {
+                int i = curr.next.val;
+                ListNode innCurr = curr.next.next.next;
+                while (innCurr != null && innCurr.val == i) {
+                    innCurr = innCurr.next;
+                }
+                curr.next = innCurr;
+
+            } else {
+                curr = curr.next;
+            }
+        }
+        return sentinel.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
