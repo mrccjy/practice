@@ -76,7 +76,7 @@ public class BinaryTreeInorderTraversal{
  * }
  */
 
-/*  public class TreeNode {
+  public class TreeNode {
       int val;
       TreeNode left;
       TreeNode right;
@@ -87,7 +87,7 @@ public class BinaryTreeInorderTraversal{
           this.left = left;
           this.right = right;
       }
-  }*/
+  }
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         Stack<TreeNode> stack = new Stack<TreeNode>();
