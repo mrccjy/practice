@@ -1,4 +1,4 @@
-package com.practice.sort;
+package com.practice.java8;
 /**
  *  @description: TODO
  *  @author chen.junyong
