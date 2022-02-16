@@ -36,7 +36,7 @@ public class HeapSort {
     }
 
     private static void buildHeap(int[] a) {
-        //从最右一个非叶子结点开始调整
+        //从最后一个非叶子结点开始调整
         for (int i=a.length/2 - 1; i>= 0; i--) {
             adjustHeap(a, i, a.length);
         }
