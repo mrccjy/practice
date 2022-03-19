@@ -55,13 +55,38 @@ public class SwapNodesInPairs{
   }
 class Solution {
     public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
+        //递归实现
+        /*if (head == null || head.next == null) {
             return head;
         }
         ListNode newHead = head.next;
         head.next = swapPairs(head.next.next);
         newHead.next = head;
 
+        return newHead;*/
+
+        //非递归实现
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode dummy = new ListNode(0, head);
+        ListNode prev = head;
+        ListNode curr = head.next;
+        ListNode newHead = curr;
+        ListNode tmp = null;
+        while (prev != null && prev.next != null) {
+            tmp = curr.next;
+            prev.next = curr.next;
+            curr.next = dummy.next;
+            dummy.next = curr;
+            dummy = prev;
+            prev = tmp;
+            if (tmp != null) {
+                curr = tmp.next;
+            } else {
+                curr = null;
+            }
+        }
         return newHead;
     }
 
