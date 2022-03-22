@@ -55,7 +55,7 @@ class Solution {
                     if (i+1 == j) {
                         dp[i][j] = true;
                     } else {
-                        dp[i][j] = true && dp[i+1][j-1];
+                        dp[i][j] = dp[i+1][j-1];
                     }
                 }
             }
