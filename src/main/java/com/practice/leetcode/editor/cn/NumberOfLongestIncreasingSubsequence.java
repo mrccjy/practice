@@ -34,14 +34,45 @@ package com.practice.leetcode.editor.cn;
 // 
 // Related Topics 树状数组 线段树 数组 动态规划
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class NumberOfLongestIncreasingSubsequence{
   public static void main(String[] args) {
        Solution solution = new NumberOfLongestIncreasingSubsequence().new Solution();
+       solution.findNumberOfLIS(new int[]{2,2,2,2,2});
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int findNumberOfLIS(int[] nums) {
-
+        int[] dp = new int[nums.length];
+        int[] cnt = new int[nums.length];
+        //dp[i] = 到nums[0]-nums[i]最长递增子序列
+        dp[0] = 1;
+        Arrays.fill(cnt,1);
+        int max = 1;
+        for (int j=1; j<dp.length; j++) {
+            for (int i=0; i<=j-1; i++) {
+                if (nums[j] > nums[i]) {
+                    if ((dp[i] + 1) == dp[j]) {
+                        cnt[j] += cnt[i];
+                    } else if ((dp[i] + 1) > dp[j]){
+                        cnt[j] = cnt[i];
+                    }
+                    dp[j] = Math.max(dp[i]+1, dp[j]);
+                } else {
+                    dp[j] = Math.max(dp[j], 1);
+                }
+            }
+            max = Math.max(max, dp[j]);
+        }
+        int re = 0;
+        for (int i=0; i<dp.length; i++) {
+            if (max == dp[i]) {
+                re += cnt[i];
+            }
+        }
+        return re;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
