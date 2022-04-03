@@ -26,9 +26,11 @@ package com.practice.leetcode.editor.cn;
 // Related Topics 设计 树状数组 二分查找 数据流 
 // 👍 29 👎 0
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RankFromStreamLcci{
   public static void main(String[] args) {
-       Solution solution = new RankFromStreamLcci().new Solution();
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class StreamRank {
