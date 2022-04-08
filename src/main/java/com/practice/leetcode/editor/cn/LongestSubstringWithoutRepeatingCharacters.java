@@ -34,18 +34,18 @@ public class LongestSubstringWithoutRepeatingCharacters{
   public static void main(String[] args) {
       LongestSubstringWithoutRepeatingCharacters l = new LongestSubstringWithoutRepeatingCharacters();
        Solution solution = l.new Solution();
-//       String s = "abcabcdd";
+       String s = "abcabcdd";
 //       String s = "abcabcbb";
 //       String s = "abcadcaa";
 //       String s = "pwwkew";
 //       String s = "bbtablud";
-       String s = "bpfbhmipx";
+//       String s = "bpfbhmipx";
       System.out.println(solution.lengthOfLongestSubstring(s));
   }
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        return method3(s);
+        return method4(s);
     }
 
       /**
@@ -127,6 +127,35 @@ class Solution {
             }
         }
         return maxNotduplicSequenceSizeSofar;
+    }
+
+      /**
+       * 滑动窗口
+       * @param s
+       * @return
+       */
+    public int method4(String s) {
+        //表示每个字符出现的次数
+        int[] ch = new int[128];
+        int left = 0, right = 0, maxLength = 0;
+        while (right < s.length()) {
+            char c = s.charAt(right);
+            ch[c]++;
+
+            //出现重复时，左侧窗口向前缩小
+            while (ch[c] > 1) {
+                //窗口每向前一步，代表对应字符数字少了1个
+                char le = s.charAt(left);
+                ch[le]--;
+                left++;
+            }
+            //去除了重复字符之后，查看当前无重复字串大小与先前记录的最大大小哪个大，取较大值
+            maxLength = Math.max(right - left + 1, maxLength);
+
+            //向右扩大窗口
+            right++;
+        }
+        return maxLength;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
