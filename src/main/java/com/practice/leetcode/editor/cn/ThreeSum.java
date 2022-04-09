@@ -51,7 +51,6 @@ public class ThreeSum{
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
-        Set<String> exists = new HashSet<>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
             if (i > 0 && nums[i] == nums[i-1]) {
@@ -78,13 +77,7 @@ class Solution {
                     li.add(nums[i]);
                     li.add(nums[l]);
                     li.add(nums[r]);
-                    Collections.sort(li);
                     l++;
-                    String e = li.get(0).toString() + li.get(1).toString() + li.get(2).toString();
-                    if (exists.contains(e)) {
-                        continue;
-                    }
-                    exists.add(e);
                     lists.add(li);
 
                 }
