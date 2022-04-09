@@ -58,13 +58,19 @@ class Solution {
             int value = 0 - nums[i];
             int twoSum = 0;
             while (l < r) {
+
                 twoSum = nums[l] + nums[r];
                 if (twoSum > value) {
                     r--;
                 } else if (twoSum < value) {
                     l++;
                 } else {
-
+                    while ((l+1) < nums.length && nums[l+1] == nums[l]) {
+                        l++;
+                    }
+                    while ((r-1) > l && nums[r-1] == nums[r]) {
+                        r--;
+                    }
                     List<Integer> li = new ArrayList<>();
                     li.add(nums[i]);
                     li.add(nums[l]);
