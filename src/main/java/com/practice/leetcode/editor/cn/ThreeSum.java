@@ -51,25 +51,32 @@ public class ThreeSum{
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> lists = new ArrayList<>();
+        //先进行排序
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
+            //和上一个数字相同的数字跳过
             if (i > 0 && nums[i] == nums[i-1]) {
                 continue;
             }
             int l = i + 1, r = nums.length -1;
             int value = 0 - nums[i];
             int twoSum = 0;
+            //确定了第一个数之后，剩余的两个数通过左侧和右侧数双指针方式确定，左侧往右侧移动，右侧往左侧移动，
             while (l < r) {
 
                 twoSum = nums[l] + nums[r];
                 if (twoSum > value) {
+                    //当左+右小于目标数时，左侧向右边移动
                     r--;
                 } else if (twoSum < value) {
+                    //当左+右大于目标数时，右侧向左侧移动
                     l++;
                 } else {
+                    //当相等时，判断左侧+1的数跟当前左侧数是否一致，一致则左侧指针向前一步防重
                     while ((l+1) < nums.length && nums[l+1] == nums[l]) {
                         l++;
                     }
+                    //当相等时，同时也判断右侧-1的数跟当前右侧数是否一致，一致则右侧指针-1防重
                     while ((r-1) > l && nums[r-1] == nums[r]) {
                         r--;
                     }
@@ -77,6 +84,7 @@ class Solution {
                     li.add(nums[i]);
                     li.add(nums[l]);
                     li.add(nums[r]);
+                    //记录好值之后，左侧指针向前移动一步继续匹配
                     l++;
                     lists.add(li);
 
