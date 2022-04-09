@@ -20,18 +20,18 @@ public class QuickSort {
 
 //        int[] a = new int[]{5,7,9,8,6,4,1,3,2};
 //        int[] a2 = new int[]{1,2,3,4,5,6,7,8,9,10};
-        int[] a1 = new int[1000000];
+        int[] a1 = new int[10];
         Random r1 = new Random(System.currentTimeMillis());
         for (int i=0; i<a1.length-1; i++) {
-            a1[i] = r1.nextInt(100000000);
+            a1[i] = r1.nextInt(10);
         }
         long start1 = System.currentTimeMillis();
-        quickSortDefault(0, a1.length-1, a1);
+        quickSortThird(0, a1.length-1, a1);
         long end1 = System.currentTimeMillis();
         System.out.println("time1:" + (end1 - start1) + "ms");
-//        for (int i : a1) {
-//            System.out.print(i+",");
-//        }
+        for (int i : a1) {
+            System.out.print(i+",");
+        }
     }
 
     private static void quicksort(int l, int u, int[] a) {
@@ -73,6 +73,24 @@ public class QuickSort {
         a[i] = key;
         quickSortDefault(l, i-1, a);
         quickSortDefault(i+1, u, a);
+    }
+
+    public static void quickSortThird(int l, int u, int[] a) {
+        if (l >= u) {
+            return;
+        }
+        int target = a[l];
+        int i = l+1, j = u;
+        while (i <= j) {
+            while (i <= u && a[i] <= target) i++;
+            while (l <= j && a[j] > target) j--;
+            if (i < j) {
+                swap(i, j, a);
+            }
+        }
+        swap(l, j, a);
+        quickSortThird(l, j-1, a);
+        quickSortThird(j+1, u, a);
     }
 
     private static void swap(int i, int j, int[] a) {
