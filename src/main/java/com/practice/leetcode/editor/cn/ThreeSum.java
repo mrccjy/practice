@@ -54,6 +54,9 @@ class Solution {
         Set<String> exists = new HashSet<>();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i-1]) {
+                continue;
+            }
             int l = i + 1, r = nums.length -1;
             int value = 0 - nums[i];
             int twoSum = 0;
