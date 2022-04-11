@@ -79,6 +79,18 @@ class Solution {
         head.next = null;
         return newHead;
     }
+
+    public ListNode recursive(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode newHead = recursive(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
+
+    }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
