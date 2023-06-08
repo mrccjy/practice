@@ -11,8 +11,8 @@ public class TakeTurnPrint {
         Object lock = new Object();
         Thread num = new Thread(new NumPrinterThread(lock));
         Thread lett = new Thread(new lettPrinterThread(lock));
-        num.start();
         lett.start();
+        num.start();
 //        byte i= 3;
 //        System.out.println("i="+i+", i&2="+(i&2));
 //        System.out.println("i="+i+", i&1="+(i&1));
@@ -30,7 +30,7 @@ public class TakeTurnPrint {
 
 class NumPrinterThread implements Runnable {
 
-    private char[] num = "0123456789".toCharArray();
+    private char[] num = "01234567891234567890".toCharArray();
 
     private Object lock;
 
