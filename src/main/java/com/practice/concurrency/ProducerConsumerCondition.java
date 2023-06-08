@@ -13,7 +13,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ProducerConsumerCondition {
     private LinkedList<String> list = new LinkedList<>();
     private static final int MAX = 10;
-    private int count;
+    private volatile int count;
 
     ReentrantLock lock = new ReentrantLock();
     Condition consumer = lock.newCondition();

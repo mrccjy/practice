@@ -11,7 +11,7 @@ import java.util.Random;
 public class ProducerConsumer {
     private LinkedList<String> list = new LinkedList<>();
     private static final int MAX = 10;
-    private int count;
+    private volatile int count;
 
     public synchronized void put(String s) {
         while (list.size() == MAX) {
